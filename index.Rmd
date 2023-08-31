@@ -1,5 +1,5 @@
 ---
-title: "**Análisis de Datos**"
+title: "**Análisis y Explotación de la Información**"
 subtitle: "CUNEF Universidad"
 date: "Página actualizada: `r format.Date(file.mtime('index.Rmd'),'%Y-%m-%d')`"
 output:
@@ -23,15 +23,17 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 knitr::opts_chunk$set(fig.width=8, fig.height=6) 
 ```
 
+<br />
 
-Esta es la página del curso de Análisis de Datos creado por
-[Roi Naveiro](http://roinaveiro.github.io)
+Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Información** del primer cuatrimestre de 2023 en CUNEF Universidad. En este sitio web encontrarás el material y los laboratorios que usaremos durante el curso. La página se actualizará con frecuencia durante el cuatromestre, así que acostúmbrate a actualizar la página.
 
 ## **Contenido**
 
 ### Tema 0 : Introducción
   - [Diapositivas](./tema0/tema0.html)
-  
+
+<!-- 
+
 ### Tema 1 : Programación en R
   - [Diapositivas](./tema1/tema1.html)
   
@@ -83,5 +85,6 @@ Esta es la página del curso de Análisis de Datos creado por
   
 ### Lab 07 - Modelos
   - [Ejercicios](./labs/lab7.html)
-  
+
+--> 
    
