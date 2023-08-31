@@ -307,7 +307,7 @@ knitr::include_graphics("img/r-rstudio.png")
 
 * Email: roi.naveiro@cunef.edu
 
-* Web del curso: [https://https://cunef-aeinf-fall2023.github.io/](https://https://cunef-aeinf-fall2023.github.io/)
+* Web del curso: [https://cunef-aeinf-fall2023.github.io/](https://cunef-aeinf-fall2023.github.io/)
 
 ---
 

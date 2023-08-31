@@ -1,1 +1,1 @@
-# cunef-aeinf-fall2023.github.io
+# Análisis y Explotación de la Información - INF-A
