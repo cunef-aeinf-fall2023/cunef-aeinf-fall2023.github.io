@@ -62,9 +62,11 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   
 ### Tema 5 : Comunicación de Resultados
   - [Diapositivas](./tema5/tema5.html)
-  
+-->
+
 ## **Laboratorios**
 
+<!-- 
 ### Lab 01 - Programación en R 
   - [Ejercicios](./labs/lab1.html)
     
