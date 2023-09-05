@@ -329,7 +329,7 @@ sample(x = 1:10, size = 1)
 ```
 
 ```
-## [1] 8
+## [1] 6
 ```
 
 ```r
@@ -338,7 +338,7 @@ sample(1:10, 1)
 ```
 
 ```
-## [1] 6
+## [1] 7
 ```
 
 ---
@@ -410,7 +410,7 @@ a &lt;- gen2_1_100()
 ```
 
 ```
-## [1] 13 22
+## [1] 75  7
 ```
 
 ```r
@@ -418,7 +418,7 @@ a
 ```
 
 ```
-## [1] 35
+## [1] 82
 ```
 
 ---
@@ -445,11 +445,11 @@ gen2_1_100()
 ```
 
 ```
-## [1] 31 48
+## [1] 42 78
 ```
 
 ```
-## [1] 79
+## [1] 120
 ```
 
 ---
@@ -462,11 +462,11 @@ gen2_1_100(10)
 ```
 
 ```
-##  [1] 52 77 15 87 33 12 38 41 96 35
+##  [1] 51 14 13 19 98 31 49 67 79 35
 ```
 
 ```
-## [1] 486
+## [1] 456
 ```
 
 ---
@@ -836,7 +836,7 @@ hora
 ```
 
 ```
-## [1] "2023-09-05 12:42:48 CEST"
+## [1] "2023-09-05 12:48:12 CEST"
 ```
 
 ```r
@@ -905,7 +905,7 @@ milista
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
 ## [[3]]
-## [1] "2023-09-05 12:42:48 CEST"
+## [1] "2023-09-05 12:48:13 CEST"
 ```
 
 ---
@@ -956,45 +956,6 @@ Podemos acceder al dataframe desde el *Environment*
 class: center, middle, inverse
 
 # Selección y modificación de valores
-
-
----
-## Seleccionar valores 
-
-En un dataframe
-
-
-```r
-# Selección con enteros negativos
-df[-c(1,2),1:3]
-```
-
-```
-##   paciente fumador edad
-## 3     INES      SI   38
-```
-
-```r
-# Selección con espacios
-df[,-2]
-```
-
-```
-##   paciente edad
-## 1  MARIANO   64
-## 2    IRENE   32
-## 3     INES   38
-```
-
-```r
-# Selección con variables lógicas
-df[1,c(TRUE, TRUE, FALSE)]
-```
-
-```
-##   paciente fumador
-## 1  MARIANO      SI
-```
 
 
 ---
@@ -1057,6 +1018,44 @@ df[1:2, 2:3]
 ##   fumador edad
 ## 1      SI   64
 ## 2      NO   32
+```
+
+---
+## Seleccionar valores 
+
+En un dataframe
+
+
+```r
+# Selección con enteros negativos
+df[-c(1,2),1:3]
+```
+
+```
+##   paciente fumador edad
+## 3     INES      SI   38
+```
+
+```r
+# Selección con espacios
+df[,-2]
+```
+
+```
+##   paciente edad
+## 1  MARIANO   64
+## 2    IRENE   32
+## 3     INES   38
+```
+
+```r
+# Selección con variables lógicas
+df[1,c(TRUE, TRUE, FALSE)]
+```
+
+```
+##   paciente fumador
+## 1  MARIANO      SI
 ```
 
 ---
