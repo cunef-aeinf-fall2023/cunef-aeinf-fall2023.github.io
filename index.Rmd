@@ -82,10 +82,11 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
 ### Lab 03 - Transformación
   - [Ejercicios](./labs/lab3.html)
 
-<!--   
 ### Lab 04 - Importación
   - [Ejercicios](./labs/lab4.html)
-  
+
+<!--   
+
 ### Lab 05 - Data Wrangling
   - [Ejercicios](./labs/lab5.html)
   
