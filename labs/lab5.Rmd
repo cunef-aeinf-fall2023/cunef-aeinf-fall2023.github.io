@@ -93,7 +93,6 @@ remuneración mediana en USD por cada `Major`.
 Además, ordena los resultados en orden descendente de mediana de salario.
 Comenta lo que observas.
 
-
 ### Solución
 
 ## Ejercicio 5
@@ -122,14 +121,14 @@ Las variables en esta base de datos son `GEOID`, `NAME`, `estimate_income`,
 ### Solución
 
 
-### Ejercicio 7
+## Ejercicio 7
 
 Extrae los aeropuertos de la base de datos `airports` para los cuales existe
 algún vuelo cuyo destino sea ese aeropuesto dentro de la base de datos `flights`.
 
 ### Solución
 
-### Ejercicio 8
+## Ejercicio 8
 
 (Difícil)
 Representa un mapa de los Estados Unidos donde cada aeropuerto de destino aparezca como un punto.
