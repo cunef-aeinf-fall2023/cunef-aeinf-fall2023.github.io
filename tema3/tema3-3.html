@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
  
 ## Tema 3 - Data Wrangling
 
-### 3.3 Organización de Datos
+### 3.3 Strings, factores y fechas
 &lt;br&gt;
 &lt;br&gt;
 .pull-left[
@@ -282,8 +282,8 @@ x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "Le")
 ```
 
-<div id="htmlwidget-42464d5362ffa97e4ef8" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-42464d5362ffa97e4ef8">{"x":{"html":"<ul>\n  <li>Cats<\/li>\n  <li>Uñas Chung <span class='match'>Le<\/span>e<\/li>\n  <li>Capital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4579cab7d818218ed460" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4579cab7d818218ed460">{"x":{"html":"<ul>\n  <li>Cats<\/li>\n  <li>Uñas Chung <span class='match'>Le<\/span>e<\/li>\n  <li>Capital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 **Pregunta**: diferencia entre `str_view` y `str_view_all`
 
@@ -298,8 +298,8 @@ x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, ".a.")
 ```
 
-<div id="htmlwidget-983f485b8e6cc2b389b7" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-983f485b8e6cc2b389b7">{"x":{"html":"<ul>\n  <li><span class='match'>Cat<\/span>s<\/li>\n  <li>U<span class='match'>ñas<\/span> Chung Lee<\/li>\n  <li><span class='match'>Cap<\/span>ital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2ccfe57b253377ceb68f" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2ccfe57b253377ceb68f">{"x":{"html":"<ul>\n  <li><span class='match'>Cat<\/span>s<\/li>\n  <li>U<span class='match'>ñas<\/span> Chung Lee<\/li>\n  <li><span class='match'>Cap<\/span>ital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 ---
 ## Strings: expresiones regulares
 
@@ -311,8 +311,8 @@ x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "^C")
 ```
 
-<div id="htmlwidget-72547568c8232b6f0650" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-72547568c8232b6f0650">{"x":{"html":"<ul>\n  <li><span class='match'>C<\/span>ats<\/li>\n  <li>Uñas Chung Lee<\/li>\n  <li><span class='match'>C<\/span>apital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-289626fe2ec127d4dfd6" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-289626fe2ec127d4dfd6">{"x":{"html":"<ul>\n  <li><span class='match'>C<\/span>ats<\/li>\n  <li>Uñas Chung Lee<\/li>\n  <li><span class='match'>C<\/span>apital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 ---
 ## Strings: expresiones regulares
@@ -324,8 +324,8 @@ Termina por `$`
 str_view(x, "l$")
 ```
 
-<div id="htmlwidget-111738ef0e12c1edc43f" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-111738ef0e12c1edc43f">{"x":{"html":"<ul>\n  <li>Cats<\/li>\n  <li>Uñas Chung Lee<\/li>\n  <li>Capita<span class='match'>l<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-560fe1fa4224281e1ed8" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-560fe1fa4224281e1ed8">{"x":{"html":"<ul>\n  <li>Cats<\/li>\n  <li>Uñas Chung Lee<\/li>\n  <li>Capita<span class='match'>l<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 
 ---
@@ -341,8 +341,8 @@ x = c("B12", "Eslava", "Ocho y Medio")
 str_view(x, "\\d")
 ```
 
-<div id="htmlwidget-33435d35f68c19865d78" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-33435d35f68c19865d78">{"x":{"html":"<ul>\n  <li>B<span class='match'>1<\/span>2<\/li>\n  <li>Eslava<\/li>\n  <li>Ocho y Medio<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6072ef9cb665d16d2e5d" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6072ef9cb665d16d2e5d">{"x":{"html":"<ul>\n  <li>B<span class='match'>1<\/span>2<\/li>\n  <li>Eslava<\/li>\n  <li>Ocho y Medio<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 ---
 ## Strings: expresiones regulares
 
@@ -366,8 +366,8 @@ x = c("ES12", "Mi cuenta es ES46", "Resido en España (ES)")
 str_view(x, "ES\\d\\d")
 ```
 
-<div id="htmlwidget-3d834cc1ac5e9e8a9ca4" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3d834cc1ac5e9e8a9ca4">{"x":{"html":"<ul>\n  <li><span class='match'>ES12<\/span><\/li>\n  <li>Mi cuenta es <span class='match'>ES46<\/span><\/li>\n  <li>Resido en España (ES)<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-84d3ff39f993edad4376" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-84d3ff39f993edad4376">{"x":{"html":"<ul>\n  <li><span class='match'>ES12<\/span><\/li>\n  <li>Mi cuenta es <span class='match'>ES46<\/span><\/li>\n  <li>Resido en España (ES)<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 ---
 ## Strings: expresiones regulares
@@ -789,7 +789,7 @@ now()
 ```
 
 ```
-## [1] "2023-11-02 11:22:17 CET"
+## [1] "2023-11-02 12:18:43 CET"
 ```
 
 ```r
@@ -797,7 +797,7 @@ str(now())
 ```
 
 ```
-##  POSIXct[1:1], format: "2023-11-02 11:22:17"
+##  POSIXct[1:1], format: "2023-11-02 12:18:43"
 ```
 
 ---

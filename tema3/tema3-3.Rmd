@@ -31,7 +31,7 @@ class: center, middle, inverse, title-slide
  
 ## Tema 3 - Data Wrangling
 
-### 3.3 Organización de Datos
+### 3.3 Strings, factores y fechas
 <br>
 <br>
 .pull-left[
