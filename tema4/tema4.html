@@ -145,7 +145,7 @@ Según el proceso de recolección de los datos, distinguimos estudios:
 ---
 ## Modelización
 
-Las herramientas de modelización tienen cuatro objetivos fundamentales:
+Las herramientas de modelización tienen tres objetivos fundamentales:
 
 * **Explorar** los datos: los modelos a veces revelan patrones que no son evidentes en
 las visualizaciónes (&gt;3D)
@@ -159,111 +159,103 @@ las visualizaciónes (&gt;3D)
 
 
 ---
+class: center, middle, inverse
 
-# Housekeeping
-
-- Midterm 01: will grade within one week!! I'm sure you all did wonderfully!
-
-- Please fill out midterm feedback by end of day today, so I can make changes! https://forms.gle/GfMoYnPNhcY6HVts8
-
-- Project partners
-
-- HW 05
+# Inferencia 
 
 ---
 
-class: center, middle
+## Terminología
 
-# Inference
+.vocab[Población]: grupo de individuos a estudiar
 
----
+.vocab[Parámetro]: cantidad numérica derivada de la población
+(casi siempre desconocida)
 
-## Terminology
-
-.vocab[Population]: a group of individuals or objects we are interested in studying
-
-.vocab[Parameter]: a numerical quantity derived from the population
-(almost always unknown)
-
-If we had data from every unit in the population, we could just calculate 
-population parameters and be done!
+Si tuviéramos datos de cada unidad de la población, podríamos simplemente calcular
+el parámetro de población y ¡listo!
 
 --
 
-**Unfortunately, we usually cannot do this. Instead, we work with**
+**Desafortunadamente, en general no podemos hacer esto. 
+En cambio, trabajamos con**
 
-.vocab[Sample]: a subset of our population of interest
+.vocab[Muestra]: un subconjunto de nuestra población de interés
 
-.vocab[Statistic]: a numerical quantity derived from a sample
+.vocab[Estadístico]: una cantidad numérica derivada de una muestra
+
 
 ---
 
-## Inference
+## Inferencia
 
-If the sample is .vocab[representative], then we can use the tools of probability and statistical inference to make .vocab[generalizable] conclusions to the broader population of interest.
+Si la muestra es .vocab[representativa], entonces podemos utilizar 
+la probabilidad y la inferencia estadística para obtener
+conclusiones .vocab[generalizables] a la población de interés.
 
 
-&lt;img src="img/soup.png" width="406" height="234" style="display: block; margin: auto;" /&gt;
-
-Similar to tasting a spoonful of soup while cooking to make an inference about the entire pot.
 
 ---
 
-## Statistical inference
+## Inferencia estadística
 
-.vocab[Statistical inference] is the process of using sample data to make 
-  conclusions about the underlying population the sample came from.
+La .vocab[inferencia estadística] es el proceso que permite, a través de
+datos de una muestra, obtener conclusiones sobre la población de la cual procede
+la misma.
 
-- .vocab[Estimation]: using the sample to estimate a plausible range of values for the unknown parameter
+- .vocab[Estimación]: utilizar la muestra para estimar un rango plausible de 
+valores de un parámetro poblacional desconocido
 
-- .vocab[Testing]: evaluating whether our observed sample provides evidence 
-for or against some claim about the population
+- .vocab[Contraste de hipótesis]: evaluar si la muestra observada proporciona evidencia 
+a favor o en contra de alguna afirmación sobre la población
 
-Today we will focus on **estimation**.
+Nos enfocaremos en la **estimación**.
 
 ---
 
 class: center, middle
 
-# Estimation
+# Estimación
 
 ---
 
-## Let's \*virtually\* go to Asheville! 
+## Viajamos a Asheville! 
 
 &lt;img src="img/asheville.jpg" width="450" style="display: block; margin: auto;" /&gt;
 
-**How much should we expect to pay for an Airbnb in Asheville?**
+**¿Cuánto deberíamos esperar pagar por un Airbnb en Asheville?**
 
 
 ---
 
-## Asheville data
+## Datos de Asheville
 
-[Inside Airbnb](http://insideairbnb.com/) scraped all Airbnb listings in 
-Asheville, NC, that were active on June 25, 2020.
+[Inside Airbnb](http://insideairbnb.com/) extrajo todos los listados de Airbnb en 
+Asheville, NC, que estaban activos el 25 de junio de 2020.
 
-**Population of interest**: listings in the Asheville with at least ten reviews.
+**Población de interés**: airbnbs en Asheville con al menos diez reseñas.
 
-**Parameter of interest**: Mean price per guest per night among these 
-listings.
+**Parámetro de interés**: Precio promedio por huésped por noche en estos 
+Airbnbs.
 
-.question[
-What is the mean price per guest per night among Airbnb rentals in June 2020, 
-among Airbnbs with at least ten reviews in Asheville (zip codes 28801 - 28806)?
+
+.pregunta[
+¿Cuál es el precio promedio por huésped por noche de los alquileres de Airbnb en junio de 2020, 
+con al menos diez reseñas en Asheville (códigos postales 28801 - 28806)?
 ]
 
-We have data on the price per guest (`ppg`) for a random
-sample of 50 Airbnb listings.
+Tenemos datos sobre el precio por huésped (`ppg`) para una muestra aleatoria de 50 listados de Airbnb.
+
 
 ---
 
-## Point estimate
+## Estimación puntual
 
-A .vocab[point estimate] is a single value computed from the sample data to serve
-as the "best guess", or estimate, for the population parameter. 
+Un .vocab[estimador puntual] es un solo valor calculado a partir de los datos de 
+la muestra para servir como la "mejor estimación" para el parámetro poblacional.
 
-Our point estimate for the population mean price per guest is the observed sample mean:
+Nuestro estimador puntual para el precio promedio por huésped en la población es 
+la media observada en la muestra:
 
 
 ```r
@@ -281,85 +273,62 @@ abb %&gt;%
 
 ---
 
-## Visualizing our sample
+## Visualización de nuestra muestra
 
-&lt;img src="tema4_files/figure-html/unnamed-chunk-10-1.png" width="80%" /&gt;
-
----
-
-.question[
-If you want to catch a fish, do you prefer a spear or a net?
-]
-
-.pull-left[
-&lt;img src="img/spear.png" width="300" style="display: block; margin: auto;" /&gt;
-]
-.pull-right[
-&lt;img src="img/net.png" width="300" style="display: block; margin: auto;" /&gt;
-]
+&lt;img src="tema4_files/figure-html/unnamed-chunk-9-1.png" width="80%" /&gt;
 
 ---
 
-.question[
-If you want to estimate a population parameter, do you prefer to report a range 
-of values the parameter might be in, or a single value?
+## Estimador puntual?
+
+.pregunta[
+Si quieres estimar un parámetro de la población, ¿prefieres informar un rango de valores en los que podría estar el parámetro, o un solo valor?
 ]
 
-.pull-left[
-&lt;img src="img/spear.png" width="300" style="display: block; margin: auto;" /&gt;
-]
-.pull-right[
-&lt;img src="img/net.png" width="300" style="display: block; margin: auto;" /&gt;
-]
 
 --
 
-- If we report a point estimate, we probably won’t hit the exact population 
-parameter.
+- Si únicamente aportamos un estimador puntual, probablemente no acertemos 
+exactamente el valor real del parámetro de la población.
 
-- If we report a range of plausible values we have a good shot at capturing 
-the parameter.
-
----
-
-&lt;img src="img/ft-election-poll.png" width="70%" style="display: block; margin: auto;" /&gt;
-
-.footnote[
-Source: [Biden vs Trump: who is leading the 2020 US election polls?](https://ig.ft.com/us-election-2020/), 10 Sep 2020.
-]
+- Si aportamos un rango de valores plausibles,
+tenemos mayor probabilidad de capturar el valor real parámetro.
 
 
 ---
 
 class: middle, center
 
-## Confidence intervals
+## Intervalos de confianza
 
 ---
 
-## Variability of sample statistics
+## Variabilidad de los estadísticos muestrales
 
-For a confidence interval for the population mean, we need to come up with a
-range of plausible values around our observed sample mean.
+Para construír un intervalo de confianza para la media de la población, 
+necesitamos crear un rango de valores plausibles alrededor de la media muestral observada.
 
-- Remember that random samples may differ from each other. If we took another
-random sample of 50 Airbnb listings in Asheville, we probably wouldn't get the same mean
-price per guest.
+- Recuerda que las muestras aleatorias pueden diferir entre sí. Si tomamos otra
+muestra aleatoria de 50 listados de Airbnb en Asheville, probablemente no obtendríamos la misma
+media de precio por huésped.
 
 --
 
-- There is some .vocab[variability] of the sample mean from these listings.
+- Existe cierta .vocab[variabilidad] en la media muestral.
 
-- To construct a confidence interval, we need to quantify this variability. This
-gives us a measurement of how much we expect the sample mean to vary from
-sample to sample.
+- Para construir un intervalo de confianza, debemos cuantificar esta variabilidad. Esto
+nos da una medida de cuánto esperamos que varíe la media muestral de
+muestra a muestra.
 
 ---
 
+## Variabilidad de los estadísticos muestrales
+
 .question[
-Suppose we split the class in half and ask each student their height. Then, we calculate the mean height of students 
-on each side of the classroom. Would you expect these two means to be exactly 
-equal, close but not equal, or wildly different?
+Supongamos que dividimos la clase por la mitad y le preguntamos a cada estudiante su altura. 
+Luego, calculamos la altura media de los estudiantes
+en cada lado del salón. ¿Esperarías que estas dos medias sean exactamente
+iguales, cercanas pero no iguales, o muy diferentes?
 ]
 
 --
@@ -367,23 +336,23 @@ equal, close but not equal, or wildly different?
 &lt;br&gt;&lt;br&gt;
 
 .question[
-Suppose you randomly sample 50 students and 5 of them are left handed. If you 
-were to take another random sample of 50 students, how many would you expect to 
-be left handed? Would you be surprised if only 3 of them were left handed? Would 
-you be surprised if 40 of them were left handed?
+Supongamos que tomas al azar 50 estudiantes y 5 de ellos son zurdos. Si
+tomaras otra muestra aleatoria de 50 estudiantes, ¿cuántos esperarías que fueran
+zurdos? ¿Te sorprendería si solo 3 de ellos fueran zurdos? ¿Te sorprendería si
+40 de ellos fueran zurdos?
 ]
 
 ---
 
-## Quantifying the variability
+## Cuantificación de la variabilidad
 
-We can quantify the variability of sample statistics using different approaches:
+Podemos cuantificar la variabilidad de los estadísticos muestrales mediante enfoques diferentes:
 
-- **Simulation**: via bootstrapping or "resampling" techniques (**today's focus**)
+- **Simulación**: mediante técnicas como "bootstrap" o "remuestreo" (**lo que haremos aquí**)
 
-or
+o
 
-- **Theory**: via the Central Limit Theorem (**coming soon!**)
+- **Teoría**: mediante el Teorema del Límite Central
 
 ---
 
@@ -393,70 +362,75 @@ class: center, middle
 
 ---
 
-## The bootstrap principle
+## El principio del bootstrap
 
 &lt;img src="img/boot.png" style="float:right"&gt;
 
-- The term .vocab[bootstrapping] comes from the phrase "pulling oneself up by one’s 
-bootstraps", which is a metaphor for accomplishing an impossible task without 
-any outside help.
+- El término .vocab[bootstrap] proviene de la frase "levantarse a uno mismo 
+tirando de la hebilla de las 
+botas", que es una metáfora para lograr una tarea imposible sin 
+ninguna ayuda externa.
 
-- In this case the impossible task is estimating a population parameter, and we’ll 
-accomplish it using data from only the given sample.
+- En este caso, la tarea imposible es estimar un parámetro de la población, y lo 
+lograremos utilizando datos solo de la muestra dada.
 
-- This notion of saying something about a population parameter using 
-only information from an observed sample is the crux of statistical inference;
-it is not limited to bootstrapping.
-
----
-
-## The bootstrap procedure
-
-1. Take a .vocab[bootstrap sample] - a random sample taken **with replacement**
-from the original sample, **of the same size** as the original sample.
-
-2. Calculate the bootstrap statistic: the statistic you’re interested in (the 
-mean, the median, the correlation, etc.) computed on the bootstrap sample.
-
-3. Repeat steps (1) and (2) many times to create a .vocab[bootstrap distribution] - a distribution of bootstrap statistics.
-
-4. Calculate the bounds of the XX% confidence interval as the middle XX% of the bootstrap distribution.
+- Esta noción de decir algo sobre un parámetro de la población usando 
+solo información de una muestra observada es la esencia de la inferencia estadística;
+no se limita al bootstrap.
 
 ---
 
-## The original sample
+## El procedimiento del bootstrap
+
+1. Tomar una .vocab[muestra bootstrap] - una muestra aleatoria tomada **con reemplazo**
+de la muestra original, **del mismo tamaño** que la muestra original.
+
+2. Calcular el .vocab[estadístico bootstrap]:  el estadístico de interés (la 
+media, la mediana, la correlación, etc.) usando la muestra bootstrap.
+
+3. Repetir los pasos (1) y (2) muchas veces para crear una .vocab[distribución bootstrap] - una distribución de estadísticos bootstrap.
+
+4. Calcular los límites del intervalo de confianza del XX% como la región que alberga el
+XX% de la distribución bootstrap.
+
+---
+
+## La muestra original
 
 &lt;br&gt;&lt;br&gt;
 
-&lt;img src="tema4_files/figure-html/unnamed-chunk-16-1.png" width="70%" /&gt;
+&lt;img src="tema4_files/figure-html/unnamed-chunk-10-1.png" width="70%" /&gt;
 
 ---
 
-## Step-by-step
+## Paso a paso
 
-**Step 1.** Take a .vocab[bootstrap sample]: a random sample taken 
-**with replacement** from the original sample, **of the same size** as the 
-original sample:
+**Paso 1.** Tomar una .vocab[muestra bootstrap]: una muestra aleatoria tomada 
+**con reemplazamiento** de la muestra original, **del mismo tamaño** que la 
+muestra original:
 
 
 
-&lt;img src="tema4_files/figure-html/unnamed-chunk-18-1.png" width="70%" /&gt;
 
----
+&lt;img src="tema4_files/figure-html/unnamed-chunk-12-1.png" width="70%" /&gt;
 
-## Step-by-step
-
-**Step 2.** Calculate the bootstrap statistic (in this case, the sample mean) 
-using the bootstrap sample:
-
-&lt;img src="tema4_files/figure-html/unnamed-chunk-19-1.png" width="70%" /&gt;
 
 ---
 
-## Step-by-step
+## Paso a paso
 
-**Step 3.** Do steps 1 and 2 over and over again to create a bootstrap 
-distribution of sample means:
+**Paso 2.** Calcular el estadístico bootstrap (en este caso, la media de la muestra) 
+usando la muestra bootstrap:
+
+
+&lt;img src="tema4_files/figure-html/unnamed-chunk-13-1.png" width="70%" /&gt;
+
+---
+
+## Paso a paso
+
+**Paso 3.** Repetir los pasos 1 y 2 varias veces para crear una distribución bootstrap 
+de medias de muestra:
 
 .pull-left[
 
@@ -466,43 +440,44 @@ distribution of sample means:
 .pull-right[
 
 
+
 ]
 
-&lt;img src="tema4_files/figure-html/unnamed-chunk-24-1.png" width="80%" /&gt;
----
-
-## Step-by-step
-
-**Step 3.** In this plot, we've taken 500 bootstrap samples, calculated the
-sample mean for each, and plotted them in a histogram:
-
-&lt;img src="tema4_files/figure-html/unnamed-chunk-25-1.png" width="70%" /&gt;
+&lt;img src="tema4_files/figure-html/unnamed-chunk-18-1.png" width="80%" /&gt;
 
 ---
 
-**Here we compare the bootstrap distribution of sample means to the distribution
-of the original data. What do you notice?**
+## Paso a paso
 
-![](tema4_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
+**Paso 3.** En este gráfico, hemos tomado 500 muestras bootstrap, calculado la
+media de la muestra para cada una y las hemos representado en un histograma:
+
+&lt;img src="tema4_files/figure-html/unnamed-chunk-19-1.png" width="70%" /&gt;
+
 
 ---
 
-## Step-by-step
+**Aquí comparamos la distribución bootstrap de las medias de la muestra con la distribución de los datos originales. ¿Qué observas?**
 
-**Step 4.** Calculate the bounds of the bootstrap interval by using percentiles 
-of the bootstrap distribution
+![](tema4_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
 
-&lt;img src="tema4_files/figure-html/unnamed-chunk-27-1.png" width="70%" /&gt;
+---
+
+## Paso a paso
+
+**Paso 4.** Calcula los límites del intervalo bootstrap utilizando percentiles de la distribución bootstrap
+
+&lt;img src="tema4_files/figure-html/unnamed-chunk-21-1.png" width="70%" /&gt;
 
 ---
 
 class: center, middle
 
-# Bootstrapping in R
+# Bootstrapping en R
 
 ---
 
-## Package `infer`
+## Paquete `infer`
 
 .pull-left[
 ![](img/infer.png)
@@ -510,8 +485,8 @@ class: center, middle
 
 .pull-right[
 &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
-The objective of package `infer` is to perform statistical inference using an 
-expressive statistical grammar that coheres with the tidyverse design framework.
+El objetivo del paquete infer es realizar inferencia estadística utilizando una
+gramática que se integra con el marco de diseño tidyverse.
 
 
 ```r
@@ -524,23 +499,21 @@ library(infer)
 
 ---
 
-## Set a seed
+## Elige una semilla
 
-Let's set a seed
 
 
 ```r
 set.seed(123)
 ```
 
-Function `set.seed()` is a base R function that allows us to control R's
-random number generation. Use this to make your simulation work reproducible.
+La función `set.seed()` es una función base de R que nos permite controlar la generación de números aleatorios en R. Úsala para hacer que tu simulación sea reproducible.
 
-In other words, it ensures we'll get the same random sample each time we run the code or knit.
+En otras palabras, asegura que obtendremos la misma muestra aleatoria cada vez que ejecutemos el código o compilemos.
 
 ---
 
-## Generate bootstrap means
+## Generar medias bootstrap
 
 
 ```r
@@ -549,11 +522,14 @@ abb %&gt;%
 * specify(response = ppg)
 ```
 
-- `specify()` is used to specify which variable in our data frame is the relevant response variable (i.e. the variable we're bootstrapping).
+- `specify()` se utiliza para especificar qué variable en nuestro dataset es la
+variable respuesta relevante (es decir, la variable que estamos sobre la que haremos
+bootstrap).
+
 
 ---
 
-## Generate bootstrap means
+## Generar medias bootstrap
 
 
 ```r
@@ -564,11 +540,11 @@ abb %&gt;%
 * generate(reps = 15000, type = "bootstrap")
 ```
 
-- `generate()` generates the bootstrap samples.
+- `generate()` generar las medias bootstrap
 
 ---
 
-## Generate bootstrap means
+## Generar medias bootstrap
 
 
 ```r
@@ -581,11 +557,13 @@ abb %&gt;%
 * calculate(stat = "mean")
 ```
 
-- `calculate()` calculates the sample statistic. In this case, we're using the mean, but we could just as easily calculate, say, bootstrap medians.
+- `calculate()` calcula el estadístico muestra. En este caso usamos la media, pero podríamos calcular, por ejemplo,
+las medianas bootstrap.
+
 
 ---
 
-## Generate bootstrap means
+## Generar medias bootstrap
 
 
 
@@ -600,7 +578,7 @@ num_reps &lt;- 100
 *boot_dist &lt;- abb %&gt;%
   # specify the variable of interest
   specify(response = ppg) %&gt;% 
-  # generate 15000 bootstrap samples
+  # generate 100 bootstrap samples
   generate(reps = num_reps, type = "bootstrap") %&gt;% 
   # calculate the statistic of each bootstrap sample
   calculate(stat = "mean")
@@ -608,10 +586,10 @@ num_reps &lt;- 100
 
 ---
 
-## Sample means
+## Medias muestrales
 
-How many observations are there in `boot_dist`? What does each observation 
-represent?
+
+¿Cuántas observaciones hay en `boot_dist`? ¿Qué representa cada observación?
 
 --
 
@@ -640,20 +618,20 @@ boot_dist
 
 ---
 
-## Visualize the distribution
+## Visualizando la distribución
 
-![](tema4_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
 
 ---
 
-## Calculate the confidence interval
+## Cálculo del intervalo de confianza
 
-A 95% confidence interval is bounded by the middle 95% of the bootstrap 
-distribution. To get middle 95%, we want to omit 2.5% on the left and on the right.
+Un intervalo de confianza del 95% contiene el 95% central de la distribución bootstrap. Para obtener el 95% central, queremos omitir el 2.5% en la izquierda y en la derecha.
+
 
 --
 
-Use `dplyr` functions:
+Usando `dplyr`:
 
 
 ```r
@@ -672,9 +650,9 @@ ci
 
 ---
 
-## Visualize a confidence interval (Option 1)
+## Visualizar un intervalo de confianza (Opción 1)
 
-Using `geom_vline()` to mark the bounds of the confidence interval
+Utilizando `geom_vline()` para marcar los límites del intervalo de confianza
 
 
 
@@ -685,91 +663,81 @@ Using `geom_vline()` to mark the bounds of the confidence interval
              color = "steelblue", lty = 2, size = 1) + 
 * geom_vline(xintercept = ci$upper_b,
              color = "steelblue", lty = 2, size = 1) +
-  labs(title = "Bootstrap distribution of mean price-per-guest",
-       subtitle = "with 95% confidence interval",
-       x = "Means", y = "Count") +
+  labs(title = "Distribución Bootstrap de la media de precio por cliente",
+       subtitle = "con IC de 95%",
+       x = "Medias", y = "Num") +
   theme_minimal()
 ```
 
 ---
 
-## Visualize a confidence interval (Option 1)
+## Visualizar un intervalo de confianza (Opción 1)
 
 
-&lt;img src="tema4_files/figure-html/unnamed-chunk-40-1.png" width="75%" /&gt;
+&lt;img src="tema4_files/figure-html/unnamed-chunk-34-1.png" width="75%" /&gt;
 
 ---
 
-## Visualize a confidence interval (Option 2)
+## Visualizar un intervalo de confianza (Opción 2)
 
 
 ```r
 *visualize(boot_dist) +
 * shade_confidence_interval(endpoints = ci)+
-  labs(title = "Bootstrap distribution of mean price-per-guest",
-       subtitle = "with 95% confidence interval",
-       x = "Means", y = "Count") 
+  labs(title = "Distribución Bootstrap de la media de precio por cliente",
+       subtitle = "con IC de 95%",
+       x = "Medias", y = "Num") 
 ```
 ---
 
-## Visualize a confidence interval (Option 2)
+## Visualizar un intervalo de confianza (Opción 2)
 
-&lt;img src="tema4_files/figure-html/unnamed-chunk-42-1.png" width="75%" /&gt;
+&lt;img src="tema4_files/figure-html/unnamed-chunk-36-1.png" width="75%" /&gt;
 ---
 
 
-## Interpreting a confidence interval
+## Interpretación de un intervalo de confianza
 
-Our 95% confidence interval (CI) is 
+Nuestro intervalo de confianza del 95% (IC) es 
 (60.9, 92.1).
 
 .question[
-Does this mean there is a 95% chance that the true mean price per night in the
-population is contained in the interval 
-(60.9, 92.1)?
+¿Significa esto que hay un 95% de probabilidad de que la media del precio por noche en la población esté contenida en el intervalo (60.9, 92.1)? 
 ]
-
-
 
 ---
 
 class: center, middle
 
 .question[
-**No!**
+**¡No!**
 ]
 
 ---
 
-## Interpreting a confidence interval
+## Interpretación de un intervalo de confianza
 
-- The population parameter is either in our interval or it isn't. It can't have a
-"95% chance" of being in any specific interval.
-
---
-
-- The bootstrap distribution captures the variability of the sample mean, but is
-based on our original sample. If we started with a different sample, then maybe our estimated 95% confidence 
-interval would have also been different.
+- El parámetro de la población está o no está en nuestro intervalo. No puede tener una "probabilidad del 95%" de estar en algún intervalo específico.
 
 --
 
-- All we can say is that, if we were to independently take repeated samples from
-this population and calculate a 95% CI for the mean in the exact same way, then
-we would *expect* 95% of these intervals to contain the population mean.
+- La distribución bootstrap captura la variabilidad de la media de la muestra, pero se basa en nuestra muestra original. Si comenzáramos con una muestra diferente, tal vez nuestro intervalo de confianza estimado del 95%  fuese diferente.
 
 --
 
-- However, we never know if any particular interval(s) actually do!
+- Todo lo que podemos decir es que, si tomáramos muestras repetidas de manera independiente de esta población y calculáramos un IC del 95% para la media de la misma manera, entonces *esperaríamos* que el 95% de estos intervalos contuvieran la media de la población.
+
+--
+
+- Sin embargo, ¡nunca sabemos si algún intervalo en particular realmente lo hace!
 
 ---
 
-## Interpretation 
+## Interpretación 
 
 .question[
-**We are 95% confident that the mean price per guest per night for Airbnbs in Asheville, NC is between 60.9 and 92.1 dollars. **
+**Tenemos un 95% de confianza en que el precio medio por huésped por noche para Airbnbs en Asheville, NC está entre 60.9 y 92.1 dólares.**
 ]
-
 ---
 class: center, middle, inverse
 
@@ -816,7 +784,7 @@ ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal() +
   geom_smooth(method="lm", se=FALSE, color='red')
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-43-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
 
 ---
 ## ¿Qué son los modelos?
@@ -860,7 +828,7 @@ ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal() +
   geom_smooth(method="lm", se=FALSE, color='red')
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-45-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-39-1.png)&lt;!-- --&gt;
 
 ---
 ## Ajustando modelos
@@ -870,7 +838,7 @@ ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal() +
 ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal()
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-46-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-40-1.png)&lt;!-- --&gt;
 
 ---
 ## Ajustando modelos
@@ -898,7 +866,7 @@ ggplot(mtcars, aes(wt, mpg)) +
   geom_point() + theme_minimal()
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-47-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-41-1.png)&lt;!-- --&gt;
 
 ---
 ## Ajustando modelos
@@ -913,7 +881,7 @@ punto a la recta del modelo
 ---
 ## Ajustando modelos
 
-![](tema4_files/figure-html/unnamed-chunk-48-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-42-1.png)&lt;!-- --&gt;
 
 ---
 ## Regresión lineal
@@ -1063,7 +1031,7 @@ ggplot(mtcars, aes(wt)) +
   geom_line(aes(y = pred), data = grid, colour = "red", size = 1)
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-52-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-46-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -1088,7 +1056,7 @@ ggplot(mtcars, aes(wt, resid)) +
   geom_point() 
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-54-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-48-1.png)&lt;!-- --&gt;
 
 ---
 ## Visualización de modelos
@@ -1189,7 +1157,7 @@ Vamos a modelizar cómo afectan los años de experiencia en el salario de un pro
 ggplot(teacher, aes(x=years, y=base)) + geom_point() + theme_minimal()
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-57-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-51-1.png)&lt;!-- --&gt;
 
 ---
 ## Interpretación de la Regresión Lineal
@@ -1207,7 +1175,7 @@ ggplot(teacher, aes(x=years, y=base)) + geom_point() +
   geom_smooth(method="lm", color='red', se=FALSE) + theme_minimal()
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-58-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-52-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -1303,7 +1271,7 @@ ggplot(teacher, aes(x=degree)) + geom_point(aes(y=base)) + theme_minimal() +
   geom_point(data = grid, aes(y = pred), colour = "red", size = 4)
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-62-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-56-1.png)&lt;!-- --&gt;
 
 ---
 ## Regresión Lineal: Visualizamos las predicciones
@@ -1392,7 +1360,7 @@ ggplot(teacher, aes(years, base, colour = degree)) +
   geom_line(data = grid, aes(y = pred)) + theme_minimal()
 ```
 
-![](tema4_files/figure-html/unnamed-chunk-65-1.png)&lt;!-- --&gt;
+![](tema4_files/figure-html/unnamed-chunk-59-1.png)&lt;!-- --&gt;
 
 
 ---
