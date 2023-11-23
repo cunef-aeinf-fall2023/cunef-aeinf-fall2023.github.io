@@ -1,0 +1,101 @@
+---
+title: "**Segundo Parcial - INF-A - CUNEF Universidad**"
+author: "Análisis y Explotación de la Información"
+date: "2023-11-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+## Ejercicio 1 (3 pts)
+
+Los datos `fish_encounters` disponibles en tidyverse, contienen información de diversas estaciones
+para la monitorización de diferentes especies de pez en un río. En particular, cada estación 
+registró qué tipo de peces ha detectado. La base de datos contiene esta información:
+
+* `fish`: identificador del tipo de pez
+* `station`: identificador de la estación
+* `seen`: = 1 si el pez fue detectado en la estación.
+
+Así por ejemplo, la estación MAE ha detectado los peces 4842, 4843, 4844, 4858 y 4861.
+
+Imaginemos que nuestra unidad observacional son los diferentes tipos de pez y nuestras variables
+son el nombre del pez, y todas las estaciones. De este modo, para la variable referente a la estación
+X, en la fila referente al pez Y, habrá un 1 si la estación X detectó al pez Y y un 0 en caso contrario.
+
+Ordena estos datos para que tengan esta estructura.
+
+**Pista:** Puedes utilizar: `df %>% replace(is.na(.), 0)`, este código reemplaza todos los NAs del dataframe `df` por 0. 
+
+### Solución
+
+```{r}
+fish_encounters %>% pivot_wider(names_from = "station", values_from = "seen") %>% 
+  replace(is.na(.), 0)
+```
+
+
+## Ejercicio 2 (3.5 pts)
+
+La base de datos presente en el fichero `states.csv` contiene la siguiente información acerca de los estados de EEUU
+
+* `state`: nombre completo del estado
+* `abb`: siglas del estado
+* `region`: región geográfica del estado
+* `population`: población del estado
+
+La base de datos del fichero `results_us_election_2016.csv` contiene la siguiente información sobre las elecciones de 2016 por estados:
+
+* `state`: nombre completo del estado
+* `electoral_votes`: número de votos del estado para la elección presidencial
+* `clinton`: porcentaje de apoyo a Hillary Clinton
+* `trump`: porcentaje de apoyo a Donald Trump
+* `others`: porcentaje de apoyo a otras candidaturas.
+
+Visualiza (con una gráfica) el porcentaje de apoyo a la candidatura de Trump según la región de los estados. Extrae dos conclusiones. ¿Qué estado del Sur tiene un comportamiento atípico?
+
+
+### Solución
+
+```{r}
+states <- read_csv("states.csv")
+elections <- read_csv("results_us_election_2016.csv")
+full <- elections %>% left_join(states, by="state")
+
+join %>% ggplot(aes(x=region, y=trump)) + geom_boxplot() + theme_minimal()
+```
+
+## Ejercicio 3 (3.5 pts)
+
+Los datos presentes en el siguiente link contienen información acerca de la evolución del desempleo en EEUU desde 1948 hasta hoy. La base de datos tiene dos variables: `DATE` la fecha en formato año, mes día y `UNRATE`, la tasa de desempleo. Responde a las siguientes cuestiones.
+
+```{r}
+link <- "https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1168&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=UNRATE&scale=left&cosd=1948-01-01&coed=2022-11-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Monthly&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2022-12-09&revision_date=2022-12-09&nd=1948-01-01"
+```
+
+* Descarga los datos e impórtalos a R.
+
+* Añade una nueva columna a la base de datos que se llame `mes` y contenga el mes de cada observación con etiquetas (es decir, Enero aparecerá como Jan (o Ene si tu R está en castellano), Febrero con Feb/, etc.)
+
+* Utilizando únicamente los datos posteriores al año 2019, calcula el desempleo **medio** por mes.  Crea un gráfico de barras cuyo eje x corresponda a la variable `mes` y el eje y contenga el desempleo medio. ¿Qué mes tiene mayor tasa de desempleo media? ¿Sabrías explicar por qué?
+
+**Pista:** recuerda añadir `stat="identity"` para que en el eje y del gráfico de barras de la última parte aparezca el desempleo medio.
+
+### Solución
+```{r}
+download.file(link, destfile = "data/paro.csv")
+paro <- read_csv("data/paro.csv")
+```
+
+```{r}
+paro %>% mutate(mes = month(DATE, label=T)) %>% filter(year(DATE) >= 2019) %>% 
+  ggplot(aes(x=mes, y=UNRATE)) + geom_bar(stat="identity") + theme_minimal()
+```
+
+
