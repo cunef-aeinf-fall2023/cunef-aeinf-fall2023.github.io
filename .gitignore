@@ -21,6 +21,11 @@
 # RStudio files
 .Rproj.user/
 
+# Exams
+exam1
+exam2
+exam_ord
+
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
